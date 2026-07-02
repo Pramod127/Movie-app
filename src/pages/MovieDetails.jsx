@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { dummyDateTimeData, dummyShowsData } from "../assets/assets";
+import { assets, dummyDateTimeData, dummyShowsData } from "../assets/assets";
 import api from '../lib/api'
 import { PlayCircleIcon, StarsIcon, Heart } from "lucide-react";
 import BlurCircle from "../component/BlurCircle";
@@ -23,6 +23,13 @@ const MovieDetails = () => {
   const [show, setShow] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const handleImageError = (event) => {
+    event.currentTarget.src = assets.screenImage;
+    event.currentTarget.onerror = null;
+  };
+
+  const posterSrc = show?.movie?.poster_path || assets.screenImage;
 
   const getShow = () => {
     setLoading(true)
@@ -73,7 +80,8 @@ const MovieDetails = () => {
       <div className="flex flex-col md:flex-row gap-8 max-w-6xl mx-auto">
         {/* Poster */}
         <img
-          src={show.movie.poster_path}
+          src={posterSrc}
+          onError={handleImageError}
           alt={show.movie.title}
           className="max-md:mx-auto rounded-xl h-104 max-w-70 object-cover"
         />

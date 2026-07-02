@@ -2,10 +2,17 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StarIcon } from 'lucide-react'; 
 import timeFormate from '../lib/timeFormate';
-
+import { assets } from '../assets/assets';
 
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
+
+  const handleImageError = (event) => {
+    event.currentTarget.src = assets.screenImage;
+    event.currentTarget.onerror = null;
+  };
+
+  const posterSrc = movie.backdrop_path || movie.poster_path || movie.posterUrl || assets.screenImage;
 
   return (
     <div className="flex flex-col justify-between p-3 bg-gray-800 rounded-2xl hover:-translate-y-1 transition duration-300 w-66">
@@ -14,7 +21,8 @@ const MovieCard = ({ movie }) => {
           navigate(`/movies/${movie._id}`);
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
-        src={movie.backdrop_path || movie.poster_path || movie.posterUrl}
+        src={posterSrc}
+        onError={handleImageError}
         alt={movie.title}
         className="rounded-lg h-64 w-full object-contain object-center cursor-pointer bg-gray-900 p-2"
       />

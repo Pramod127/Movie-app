@@ -63,8 +63,8 @@ export const dummyShowsData = [
         "id": 994401,
         "title": "Starlight Odyssey (2025)",
         "overview": "An astronaut embarks on an interstellar journey to find a new home for humanity.",
-        "poster_path": "https://image.tmdb.org/t/p/original/abcd1234.jpg",
-        "backdrop_path": "https://image.tmdb.org/t/p/original/abcd1234.jpg",
+        "poster_path": "https://images.pexels.com/photos/13047563/pexels-photo-13047563.jpeg",
+        "backdrop_path": "https://images.pexels.com/photos/13047563/pexels-photo-13047563.jpeg",
         "genres": [
             { "id": 878, "name": "Science Fiction" },
             { "id": 12, "name": "Adventure" }
